@@ -134,3 +134,4 @@ pip-selfcheck.json
 
 # Some love for the vim users
 .*.sw*
+data/deviceid-PGMap19.txt
