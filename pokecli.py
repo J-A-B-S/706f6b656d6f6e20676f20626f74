@@ -221,23 +221,23 @@ def report_summary(bot):
     metrics = bot.metrics
     metrics.capture_stats()
     logger.info('')
-    logger.info('Ran for {}'.format(metrics.runtime()))
-    logger.info('Total XP Earned: {}  Average: {:.2f}/h'.format(metrics.xp_earned(), metrics.xp_per_hour()))
-    logger.info('Travelled {:.2f}km'.format(metrics.distance_travelled()))
-    logger.info('Visited {} stops'.format(metrics.visits['latest'] - metrics.visits['start']))
-    logger.info('Encountered {} pokemon, {} caught, {} released, {} evolved, {} never seen before'
+    logger.info(CYAN + 'Ran for {}'.format(metrics.runtime()) + RESET)
+    logger.info(CYAN + 'Total XP Earned: {}  Average: {:.2f}/h'.format(metrics.xp_earned(), metrics.xp_per_hour()) + RESET)
+    logger.info(CYAN + 'Travelled {:.2f}km'.format(metrics.distance_travelled()) + RESET)
+    logger.info(CYAN + 'Visited {} stops'.format(metrics.visits['latest'] - metrics.visits['start']) + RESET)
+    logger.info(CYAN + 'Encountered {} pokemon, {} caught, {} released, {} evolved, {} never seen before'
                 .format(metrics.num_encounters(), metrics.num_captures(), metrics.releases,
-                        metrics.num_evolutions(), metrics.num_new_mons()))
-    logger.info('Threw {} pokeball{}'.format(metrics.num_throws(), '' if metrics.num_throws() == 1 else 's'))
-    logger.info('Earned {} Stardust'.format(metrics.earned_dust()))
-    logger.info('Hatched eggs {}'.format(metrics.hatched_eggs(0)))
+                        metrics.num_evolutions(), metrics.num_new_mons()) + RESET)
+    logger.info(CYAN + 'Threw {} pokeball{}'.format(metrics.num_throws(), '' if metrics.num_throws() == 1 else 's') + RESET)
+    logger.info(CYAN + 'Earned {} Stardust'.format(metrics.earned_dust()) + RESET)
+    logger.info(CYAN + 'Hatched eggs {}'.format(metrics.hatched_eggs(0)) + RESET)
     if (metrics.next_hatching_km(0)):
-        logger.info('Next egg hatches in {:.2f} km'.format(metrics.next_hatching_km(0)))
+        logger.info(CYAN + 'Next egg hatches in {:.2f} km'.format(metrics.next_hatching_km(0)) + RESET)
     logger.info('')
     if metrics.highest_cp is not None:
-        logger.info('Highest CP Pokemon: {}'.format(metrics.highest_cp['desc']))
+        logger.info(CYAN + 'Highest CP Pokemon: {}'.format(metrics.highest_cp['desc']) + RESET)
     if metrics.most_perfect is not None:
-        logger.info('Most Perfect Pokemon: {}'.format(metrics.most_perfect['desc']))
+        logger.info(CYAN + 'Most Perfect Pokemon: {}'.format(metrics.most_perfect['desc']) + RESET)
 
 def init_config():
     parser = argparse.ArgumentParser()
