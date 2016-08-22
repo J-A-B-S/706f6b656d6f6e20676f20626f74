@@ -61,9 +61,19 @@ if sys.version_info >= (2, 7, 9):
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s [%(name)10s] [%(levelname)s] %(message)s')
+    format='%(asctime)s %(message)s')
 logger = logging.getLogger('cli')
 logger.setLevel(logging.INFO)
+
+GRAY =    '\033[90m'
+RED =     '\033[91m'
+GREEN =   '\033[92m'
+YELLOW =  '\033[93m'
+BLUE =    '\033[94m'
+MAGENTA = '\033[95m'
+CYAN =    '\033[96m'
+WHITE =   '\033[97m'
+RESET =   '\033[0m'
 
 class SIGINTRecieved(Exception): pass
 
@@ -83,7 +93,7 @@ def main():
             return "not found"
 
     try:
-        logger.info('PokemonGO Bot v1.0')
+        logger.info(GREEN + 'PokemonGO Bot v1.0' + RESET)
         logger.info('commit: ' + get_commit_hash())
         sys.stdout = codecs.getwriter('utf8')(sys.stdout)
         sys.stderr = codecs.getwriter('utf8')(sys.stderr)
@@ -92,7 +102,7 @@ def main():
         if not config:
             return
 
-        logger.info('Configuration initialized')
+        logger.info(WHITE + 'Configuration initialized' + RESET)
         health_record = BotEvent(config)
         health_record.login_success()
 
